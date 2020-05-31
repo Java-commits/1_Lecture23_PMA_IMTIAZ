@@ -16,8 +16,13 @@ import javax.persistence.ManyToMany;
 @Entity
 public class Project {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	// @GeneratedValue(strategy = GenerationType.AUTO)  
+	
+	// Hibernate was responsible for generating employee ID which is useful only when creating tables using entity classes.
+	// But hiberante is unable to generate project ID when creating through external sql files like data.sql
+	//To avoid this we are using strategy = GenerationType.IDENTITY where Database itself is responsible for generating the project Id's.   
+	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long projectId;
 
 	public Long getProjectId() {
